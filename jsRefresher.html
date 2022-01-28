@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        "use strict";
+        let a = 34;
+        console.log(a);
+        document.addEventListener("click", function click() {
+            console.log("Clicked!");
+        });
+
+        function fun() {
+            console.log(this);
+        }
+        fun();
+
+        // let myObj = {
+        //     myFunction : (number) => {
+        //         console.log(this);
+        //     },
+        //     a : this,
+        //     fun(){
+        //         console.log(this);
+        //     }
+        // }
+        // myObj.myFunction(10);
+        // console.log(myObj.a);
+        // myObj.fun();
+
+        let myObj = {
+            myFunction: () => {
+                console.log("Arrow func inside object:");
+                console.log(this); // global object
+                console.log(this.b); // this.b is nothing
+            },
+            a: this, // global object
+            b: 10,
+            // in object method (function in an object),
+            // this refers to the object (myObj)
+            fun() {
+                console.log("object method :");
+                console.log(this); // myObj object
+                console.log(this.b); // myObj.b
+            },
+        };
+        myObj.myFunction();
+        myObj.fun();
+    </script>
+</head>
+
+<body>
+    <h1>I am learning JS!</h1>
+</body>
+
+</html>
